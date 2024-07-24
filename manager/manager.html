@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manager</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../style/manger.css" />
+  </head>
+  <body>
+    <div class="w-100 d-flex">
+      <div class="bar">
+        <i class="fa-solid fa-bars fa-2xl br"></i>
+      </div>
+      <div class="left left-n">
+        <i class="fa-solid fa-bars fa-2xl btw"></i>
+
+        <ul>
+          <li class="px-4 py-3 st_f" p_link="student" id="st">
+            Student <i class="fa-solid fa-down-long ms-3"></i>
+          </li>
+          <div class="ho animate__backInDown">
+            <li class="py-2 stp" p_link="admission" id="st">Admission</li>
+            <li class="py-2 stp" p_link="all_student" id="all_std">
+              All student
+            </li>
+
+            <li class="py-2 stp" p_link="attendence">Attendence</li>
+
+            <li class="py-2 stp" p_link="fees">Fees managament</li>
+
+            <li class="py-2 stp" p_link="pending_fees">Pending fees</li>
+          </div>
+
+          <li class="px-4 py-3 menu" p_link="teacher">Teacher</li>
+          <li class="px-4 py-3 menu" p_link="pending_fees">Pending Fees</li>
+          <li class="px-4 py-3 menu" p_link="pending_salary">Pending Salary</li>
+          <li class="px-4 py-3 menu" p_link="registation_request">
+            Registation request
+          </li>
+          <li class="px-4 py-3 menu" p_link="admission_request">
+            Admission request
+          </li>
+          <li class="px-4 py-3 menu" p_link="advertising" id="adt">
+            Advertising
+          </li>
+          <li class="px-4 py-3 menu" p_link="admission_form">Admission Form</li>
+        </ul>
+      </div>
+      <div class="right"></div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $(".menu").each(function () {
+          $(this).click(function () {
+            var r = $(this).attr("p_link");
+            $.ajax({
+              type: "POST",
+              url: "page/" + r + ".php",
+              success: function (res) {
+                $(".right").html(res);
+              },
+            });
+          });
+        });
+        $("#adt").click();
+        $(".ho").hide();
+        $("#st").click(function () {
+          $(".ho").toggle();
+        });
+        $(".stp").each(function () {
+          $(this).click(function () {
+            var r = $(this).attr("p_link");
+            $.ajax({
+              type: "POST",
+              url: "page/student/" + r + ".php",
+              success: function (res) {
+                $(".right").html(res);
+              },
+            });
+          });
+        });
+        $(".br").click(function () {
+          $(".left").removeClass("left-n");
+          $(".bar").hide();
+        });
+        $(".btw").click(function () {
+          $(".left").addClass("left-n");
+          $(".bar").show();
+        });
+      });
+    </script>
+  </body>
+</html>

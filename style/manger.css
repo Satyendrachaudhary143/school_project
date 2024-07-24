@@ -1,0 +1,80 @@
+.left {
+  background-color: blue;
+  width: 18%;
+  height: 100vh;
+}
+.right {
+  margin: 0px;
+  padding: 0px;
+  width: 83%;
+  height: 100vh;
+  overflow-y: auto;
+}
+.left ul {
+  margin: 0;
+  padding: 0;
+}
+.left ul li {
+  list-style: none;
+  color: white;
+  font-weight: 800;
+  border-bottom: 2px solid white;
+}
+.left ul li:hover {
+  background-color: white;
+  color: blue;
+  cursor: pointer;
+}
+.nvb ul li:hover {
+  background-color: white;
+  color: blue;
+  cursor: pointer;
+}
+.fx {
+  width: 100%;
+  height: 100vh;
+}
+.cantainer {
+  display: flex;
+  justify-content: space-around;
+}
+.cantainer li {
+  list-style: none;
+  font-weight: 800;
+}
+#st {
+  position: relative;
+}
+.ho li {
+  margin-left: 70px;
+  font-size: 15px;
+}
+.bar {
+  display: none;
+}
+.btw {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .bar {
+    display: block;
+    margin: 10px 0px;
+  }
+  .left {
+    width: 500px;
+    height: 100vh;
+  }
+  .left-n {
+    display: none;
+  }
+  .btw {
+    display: block;
+    margin-left: 15px;
+    margin-bottom: 3px;
+    margin-top: 20px;
+  }
+  .st_f {
+    margin-top: 15px;
+    padding: 0px 10px;
+  }
+}
